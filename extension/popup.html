@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FinSentiment BR</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>FinSentiment BR</h1>
+      <p>Analyze market sentiment with AI</p>
+    </header>
+
+    <main>
+      <div class="input-group">
+        <textarea id="textInput" placeholder="Paste the financial news or text here..."></textarea>
+      </div>
+
+      <button id="analyzeBtn" class="primary-btn">
+        <span>Analyze Text</span>
+      </button>
+
+      <div id="loadingIndicator" class="hidden">
+        <div class="spinner"></div>
+        <p>Analyzing with FinBERT...</p>
+      </div>
+
+      <div id="resultContainer" class="result-card hidden">
+        <div class="sentiment-indicator">
+          <span id="sentimentIcon" class="icon"></span>
+          <h2 id="sentimentLabel">--</h2>
+        </div>
+        <div class="confidence-bar">
+          <div class="label-row">
+            <span>Confidence</span>
+            <span id="confidenceScore">0%</span>
+          </div>
+          <div class="progress-bg">
+            <div id="confidenceFill" class="progress-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

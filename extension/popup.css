@@ -1,0 +1,203 @@
+:root {
+  --bg-color: #f8fafc;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --surface: #ffffff;
+  --border: #e2e8f0;
+  
+  /* Sentiment Colors */
+  --positive: #10b981;
+  --neutral: #94a3b8;
+  --negative: #ef4444;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 340px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+}
+
+.container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+header p {
+  margin: 4px 0 0;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+#textInput {
+  width: 100%;
+  height: 100px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  resize: none;
+  font-family: inherit;
+  font-size: 0.875rem;
+  background: var(--surface);
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#textInput:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+}
+
+.primary-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+.primary-btn:active {
+  transform: translateY(1px);
+}
+
+/* Base result card styles (Hidden by default) */
+.result-card {
+  margin-top: 8px;
+  padding: 16px;
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border-left: 4px solid var(--neutral);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.result-card.hidden {
+  display: none;
+}
+
+/* Loading specific */
+#loadingIndicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 16px 0;
+}
+
+#loadingIndicator.hidden {
+  display: none;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+#loadingIndicator p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.sentiment-indicator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon {
+  font-size: 2rem;
+}
+
+#sentimentLabel {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.confidence-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.progress-bg {
+  width: 100%;
+  height: 8px;
+  background-color: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--neutral);
+  border-radius: 4px;
+  transition: width 0.5s ease-out, background-color 0.3s;
+}
+
+/* Dynamic Classes applied via JS */
+.result-card.positive { border-left-color: var(--positive); }
+.result-card.positive .progress-fill { background-color: var(--positive); }
+.result-card.positive #sentimentLabel { color: var(--positive); }
+
+.result-card.negative { border-left-color: var(--negative); }
+.result-card.negative .progress-fill { background-color: var(--negative); }
+.result-card.negative #sentimentLabel { color: var(--negative); }
+
+.result-card.neutral { border-left-color: var(--neutral); }
+.result-card.neutral .progress-fill { background-color: var(--neutral); }
+.result-card.neutral #sentimentLabel { color: var(--neutral); }

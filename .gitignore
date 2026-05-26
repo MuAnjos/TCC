@@ -1,0 +1,34 @@
+# Python Virtual Environments
+backend/venv/
+backend/.venv/
+venv/
+.venv/
+env/
+.env/
+
+# Python Cache and Compiled files
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# OS Files
+Thumbs.db
+db.properties
+.DS_Store
+
+# Local Env Files
+.env.local
+.env.*.local
